@@ -14,6 +14,7 @@ interface IAnimal{
     tipo: 'terrestre' | 'aquático';
     executarRUgido(alturaEmDecibeis: number): void;
 }
+
 const animal: IAnimal = {
     nome: 'Elefante',
     tipo: 'terrestre',
@@ -29,4 +30,39 @@ const felino: IFelino = {
     nome: 'Leão',
     tipo: 'terrestre',
     visaoNoturna: true,
+}
+
+//types
+//une diferentes tipos de interfaces
+interface IIAnimal {
+    domestico: boolean;
+    nome: string;
+    tipo: 'terrestre' | 'aquático';
+}
+
+interface IIFelino extends IIAnimal{
+    visaoNoturna: boolean;
+}
+
+interface IICanino extends IIAnimal{
+    porte: 'pequeno' | 'medio' | 'grande';
+}
+
+type IDomestico = IIFelino | IICanino;
+
+const animal1: IDomestico = {
+    domestico: true,
+    nome: 'Cachorro',
+    porte: 'medio',
+    tipo: 'terrestre',   
+}
+
+type IIDomestico = IIFelino & IICanino;
+
+const animal2: IDomestico = {
+    domestico: true,
+    nome: 'Cachorro',
+    porte: 'medio',
+    tipo: 'terrestre',
+    visaoNoturna: false,   
 }

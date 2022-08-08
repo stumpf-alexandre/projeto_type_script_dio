@@ -77,18 +77,36 @@
 //});
 
 //Generic types
-function adicionaApendiceALista <T>(array: any[], valor: T){
-    return array.map(item => item + valor);
-}
+//function adicionaApendiceALista <T>(array: any[], valor: T){
+//    return array.map(item => item + valor);
+//}
 //neste caso tanto faz se os dados forem numeros ou strings
-adicionaApendiceALista([1, 2, 3], 1);
-adicionaApendiceALista(['A', 'B', 'C'], 'A');
-adicionaApendiceALista(['A', 'B', 3], 5);
+//adicionaApendiceALista([1, 2, 3], 1);
+//adicionaApendiceALista(['A', 'B', 'C'], 'A');
+//adicionaApendiceALista(['A', 'B', 3], 5);
 
-function adicionaApendiceALista1 <T>(array: T[], valor: T){
-    return array.map(() => valor);
-}
+//function adicionaApendiceALista1 <T>(array: T[], valor: T){
+//    return array.map(() => valor);
+//}
 //neste caso só aceita se for tudo igual
-adicionaApendiceALista1([1, 2, 3], 1);
-adicionaApendiceALista1(['A', 'B', 'C'], 'D');
+//adicionaApendiceALista1([1, 2, 3], 1);
+//adicionaApendiceALista1(['A', 'B', 'C'], 'D');
 //adicionaApendiceALista1([1, 2, 3], 'D');deu erro
+
+//Condicionais apartir de Parâmetros
+interface IUsuario{
+    id: string;
+    email: string;
+}
+
+interface IAdmin extends IUsuario{
+    cargo: 'gerente' | 'coordenador' | 'supervisor';
+}
+//uma interface que pode ser um usuario normal ou pode ser um admin
+function redirecione(usuario: IUsuario | IAdmin){
+    if('cargo' in usuario){
+        //redirecionar para a àrea de administração
+    }
+
+    //redirecionar para a àrea de usuario
+}

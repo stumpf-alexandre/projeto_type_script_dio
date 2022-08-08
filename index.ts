@@ -94,34 +94,77 @@
 //adicionaApendiceALista1([1, 2, 3], 'D');deu erro
 
 //Condicionais apartir de Parâmetros
-interface IUsuario{
-    id: string;
-    email: string;
-}
+//interface IUsuario{
+//    id: string;
+//    email: string;
+//}
 
-interface IAdmin extends IUsuario{
-    cargo: 'gerente' | 'coordenador' | 'supervisor';
-}
+//interface IAdmin extends IUsuario{
+//    cargo: 'gerente' | 'coordenador' | 'supervisor';
+//}
 //uma interface que pode ser um usuario normal ou pode ser um admin
-function redirecione(usuario: IUsuario | IAdmin){
-    if('cargo' in usuario){
+//function redirecione(usuario: IUsuario | IAdmin){
+//    if('cargo' in usuario){
         //redirecionar para a àrea de administração
-    }
+//    }
 
     //redirecionar para a àrea de usuario
-}
+//}
 
 //ou fazer de outra forma
-interface IIUsuario{
-    id: string;
-    email: string;
+//interface IIUsuario{
+//    id: string;
+//    email: string;
     //transformando o item em um dado opcional com a ?
-    cargo?: 'gerente' | 'coordenador' | 'supervisor' | 'funcionario';
-}
-function redirecione1(usuario: IIUsuario){
-    if(usuario.cargo){
+//    cargo?: 'gerente' | 'coordenador' | 'supervisor' | 'funcionario';
+//}
+//function redirecione1(usuario: IIUsuario){
+//    if(usuario.cargo){
         //redirecionar(usuario.cargo);
-    }
+//    }
 
     //redirecionar para a área do usuário
+//}
+
+//Variáveis com propriedade readonly e private
+interface Cachorro{
+    nome: string;
+    idade: number;
+    parqueFavorito?: string;
 }
+
+class MeuCachorro implements Cachorro{
+    nome;
+    idade;
+
+    constructor(nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+
+const cao = new MeuCachorro('Apolo', 14);
+
+//fazendo os itens só de leitura
+interface ICachorro{
+    nome: string;
+    idade: number;
+    parqueFavorito?: string;
+}
+
+type CachorroSomenteLeitura = {
+    //sinal para remover os valores opicionais -? e + para adicionar o readonly
+    +readonly [k in keyof Cachorro]-?: Cachorro[k];
+}
+
+class IMeuCachorro implements ICachorro{
+    nome;
+    idade;
+
+    constructor(nome, idade){
+        this.nome = nome;
+        this.idade = idade;
+    }
+}
+
+const cao1 = new IMeuCachorro('Apolo', 14);

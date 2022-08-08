@@ -127,44 +127,54 @@
 //}
 
 //Variáveis com propriedade readonly e private
-interface Cachorro{
-    nome: string;
-    idade: number;
-    parqueFavorito?: string;
-}
+//interface Cachorro{
+//    nome: string;
+//    idade: number;
+//    parqueFavorito?: string;
+//}
 
-class MeuCachorro implements Cachorro{
-    nome;
-    idade;
+//class MeuCachorro implements Cachorro{
+//    nome;
+//    idade;
 
-    constructor(nome, idade){
-        this.nome = nome;
-        this.idade = idade;
-    }
-}
+//    constructor(nome, idade){
+//        this.nome = nome;
+//        this.idade = idade;
+//    }
+//}
 
-const cao = new MeuCachorro('Apolo', 14);
+//const cao = new MeuCachorro('Apolo', 14);
 
 //fazendo os itens só de leitura
-interface ICachorro{
-    nome: string;
-    idade: number;
-    parqueFavorito?: string;
-}
+//interface ICachorro{
+//    nome: string;
+//    idade: number;
+//    parqueFavorito?: string;
+//}
 
-type CachorroSomenteLeitura = {
+//type CachorroSomenteLeitura = {
     //sinal para remover os valores opicionais -? e + para adicionar o readonly
-    +readonly [k in keyof Cachorro]-?: Cachorro[k];
-}
+//    +readonly [k in keyof Cachorro]-?: Cachorro[k];
+//}
 
-class IMeuCachorro implements ICachorro{
-    nome;
-    idade;
+//class IMeuCachorro implements ICachorro{
+//    nome;
+//    idade;
 
-    constructor(nome, idade){
-        this.nome = nome;
-        this.idade = idade;
+//    constructor(nome, idade){
+ //       this.nome = nome;
+ //       this.idade = idade;
+ //   }
+//}
+
+//const cao1 = new IMeuCachorro('Apolo', 14);
+
+import $ from 'jquery';
+//com o comando no painel de comando na pasta do projeto, digitar npm install jquery
+$.fn.extends({
+    novaFuncao(){
+        console.log('Chama nova função');
     }
-}
+});
 
-const cao1 = new IMeuCachorro('Apolo', 14);
+$('body').novaFuncao();

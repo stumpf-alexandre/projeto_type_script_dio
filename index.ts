@@ -110,3 +110,18 @@ function redirecione(usuario: IUsuario | IAdmin){
 
     //redirecionar para a àrea de usuario
 }
+
+//ou fazer de outra forma
+interface IIUsuario{
+    id: string;
+    email: string;
+    //transformando o item em um dado opcional com a ?
+    cargo?: 'gerente' | 'coordenador' | 'supervisor' | 'funcionario';
+}
+function redirecione1(usuario: IIUsuario){
+    if(usuario.cargo){
+        //redirecionar(usuario.cargo);
+    }
+
+    //redirecionar para a área do usuário
+}

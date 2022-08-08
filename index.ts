@@ -169,12 +169,31 @@
 
 //const cao1 = new IMeuCachorro('Apolo', 14);
 
-import $ from 'jquery';
-//com o comando no painel de comando na pasta do projeto, digitar npm install jquery
-$.fn.extends({
-    novaFuncao(){
-        console.log('Chama nova função');
-    }
-});
+//import $ from 'jquery';
+//com o comando no painel de comando na pasta do projeto, digitar npm install jquery e um npx tsc --init
+//npm i --save-dev @types/jquery
+//na pasta tsconfig.json pode ser alterado o "module": "ES2015", e o "target": "ES2018",
+//$.fn.extend({
+//    novaFuncao(){
+//        console.log('Chama nova função');
+//    }
+//});
 
-$('body').novaFuncao();
+//$('body').novaFuncao();
+
+//como usar um Omit
+interface Pessoa{
+    nome: string;
+    idade: number;
+    nacionalidade: string;
+}
+
+interface Brasileiro extends Omit<Pessoa, 'nacionalidade'>{
+
+}
+
+const brasileiro: Brasileiro = {
+    nome: 'Paulo',
+    idade: 37,
+    //nacionalidade: 'Marroquino', não aceita a nacionalidade devido o omit
+}
